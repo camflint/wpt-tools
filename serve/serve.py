@@ -384,9 +384,12 @@ def normalise_config(config, ports):
     for scheme, ports_used in ports.iteritems():
         ports_[scheme] = ports_used
 
+    default_headers = config["default_headers"] if "default_headers" in config else []
+
     return {"host": host,
             "domains": domains,
-            "ports": ports_}
+            "ports": ports_,
+            "default_headers": default_headers}
 
 
 def get_ssl_config(config, external_domains, ssl_environment):
